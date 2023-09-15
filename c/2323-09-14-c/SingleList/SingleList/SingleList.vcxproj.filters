@@ -18,5 +18,8 @@
     <ClCompile Include="SingleList_Insert.c">
       <Filter>소스 파일</Filter>
     </ClCompile>
+    <ClCompile Include="SingleList_Delete.c">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>
