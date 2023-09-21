@@ -18,8 +18,11 @@
     <ClCompile Include="ex_0.c">
       <Filter>소스 파일</Filter>
     </ClCompile>
+<<<<<<< HEAD
     <ClCompile Include="ex_1.c">
       <Filter>소스 파일</Filter>
     </ClCompile>
+=======
+>>>>>>> 7590e28e3ce36eb11543afdfcb988b68d56f58a6
   </ItemGroup>
 </Project>

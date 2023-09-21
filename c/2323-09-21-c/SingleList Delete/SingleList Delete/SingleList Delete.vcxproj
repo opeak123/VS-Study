@@ -128,7 +128,10 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="ex_0.c" />
+<<<<<<< HEAD
     <ClCompile Include="ex_1.c" />
+=======
+>>>>>>> 7590e28e3ce36eb11543afdfcb988b68d56f58a6
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
