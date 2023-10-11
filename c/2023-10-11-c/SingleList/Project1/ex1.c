@@ -5,16 +5,14 @@
 
 #define IS_EMPTY(g_head) (!(g_head))
 
-typedef struct Node* node_pointer;
-
+typedef struct Node* node_Pointer;
 typedef struct Node
 {
 	char nData[50];
-	node_pointer next;
+	node_Pointer next;
 }Node;
 
 Node* g_head = NULL;
-
 
 void InsertNewNode(char* getData)
 {
@@ -39,29 +37,29 @@ int PrintNode()
 
 	if (IS_EMPTY(pNode) == 1)
 	{
-		printf("출력할 노드가없음\n");
+		printf("노드가 없음\n");
 		return 1;
 	}
 
-	while (IS_EMPTY(pNode) == 0)
+	while(IS_EMPTY(pNode) == 0)//0
 	{
-		printf("[%p]의 데이터 --> [%s]\n", pNode, pNode->nData);
-		printf("[%p]의 다음주소 --> [%p]\n\n", pNode, pNode->next);
+		printf("[%p]의 주소가 가리키는 데이터 ---> [%s]\n", pNode, pNode->nData);
+		printf("[%p]주소의 다음 ---> [%p]\n\n", pNode, pNode->next);
+
 		pNode = pNode->next;
 	}
 	return 0;
 }
 
-
 int DeleteNode(char* getData)
 {
 	Node* pTemp = g_head;
 	Node* pDelete = pTemp;
-	int cmpCount = NULL;
+	 int cmpCount = 0;
 
-	if (IS_EMPTY(pTemp) == 1)
+	if (IS_EMPTY(g_head) == 1)
 	{
-		printf("DeleteNode() : 삭제할 노드가 없음\n");
+		printf("DeleteData() : 삭제할 노드 없음\n");
 		return 1;
 	}
 
@@ -72,7 +70,7 @@ int DeleteNode(char* getData)
 
 		if (strcmp(pDelete->nData, getData) == 0)
 		{
-			printf("DeleteNode() : [%s]의 노드를 삭제함\n", getData);
+			printf("DeleteData() : [%s]의 데이터가 삭제되었음\n", getData);
 			free(pDelete);
 			cmpCount++;
 			break;
@@ -80,51 +78,53 @@ int DeleteNode(char* getData)
 	}
 
 	if (cmpCount == NULL)
-		printf("DeleteNode() : [%s]의 노드를 찾지못함\n", getData);
-
+	{
+		printf("DeleteData() : 데이터를 찾을 수 없음\n");
+		return 1;
+	}
 }
 
-
-int FindData(char* getData)
+int SearchNode(char* getData)
 {
-	Node* pTemp = g_head;
-	int cmpCount = NULL;
+	Node* sNode = g_head;
+	int cmpCount = 0;
 
-	if (IS_EMPTY(g_head) == 1)
+	if (IS_EMPTY(sNode) == 1)
 	{
-		printf("FindData(): 노드가 없음\n");
+		printf("SearchNode() : 노드가 없음\n");
 		return 1;
 	}
 
-	while (pTemp != NULL)
+	while (sNode != NULL)
 	{
-		if (strcmp(pTemp->nData, getData) == 0)
+		if (strcmp(sNode->nData, getData) == 0)
 		{
-			printf("FindData() : [%s]의 노드를 찾음\n", getData);\
+			printf("[%s]를 찾음 ---> 주소 : [%p] \n",sNode->nData,sNode);
 			cmpCount++;
 			break;
 		}
-		pTemp = pTemp->next;
+		sNode = sNode->next;
 	}
 
 	if (cmpCount == NULL)
 	{
-		printf("FindData() : [%s]의 노드를 찾지못함\n", getData);
+		printf("SearchNode() : [%s]를 찾을 수 없음\n", getData);		
+		return 1;
 	}
-
-
 	return 0;
 }
-
 
 int main()
 {
 	InsertNewNode("Test01");
-	InsertNewNode("Test02");
-	InsertNewNode("Test03"); 
 	PrintNode();
 
-	FindData("Test02");
+	DeleteNode("Test01");
+	SearchNode("Test01");
+
+
+	//InsertNewNode("Test02");
+	//InsertNewNode("Test03");
 
 	return 0;
 }
