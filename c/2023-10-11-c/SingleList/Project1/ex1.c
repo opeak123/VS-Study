@@ -51,7 +51,7 @@ int PrintNode()
 	return 0;
 }
 
-int DeleteNode(char* getData)
+/*int DeleteNode(char* getData)
 {
 	Node* pTemp = g_head;
 	Node* pDelete = pTemp;
@@ -82,6 +82,50 @@ int DeleteNode(char* getData)
 		printf("DeleteData() : 데이터를 찾을 수 없음\n");
 		return 1;
 	}
+}*/
+
+int DeleteNode(char* getData)
+{
+	Node* pTemp = g_head;
+	Node* pPrev = NULL;
+	int cmpCount = 0;
+
+	if (IS_EMPTY(g_head) == 1)
+	{
+		printf("DeleteData() : 삭제할 노드 없음\n");
+		return 1;
+	}
+
+	while (pTemp != NULL)
+	{
+		if (strcmp(pTemp->nData, getData) == 0)
+		{
+			if (pPrev != NULL)
+			{
+				pPrev->next = pTemp->next;
+			}
+			else
+			{
+				g_head = pTemp->next;
+			}
+
+			printf("DeleteData() : [%s]의 데이터가 삭제되었음\n", getData);
+			free(pTemp);
+			cmpCount++;
+			break;
+		}
+
+		pPrev = pTemp;
+		pTemp = pTemp->next;
+	}
+
+	if (cmpCount == 0)
+	{
+		printf("DeleteData() : 데이터를 찾을 수 없음\n");
+		return 1;
+	}
+
+	return 0;
 }
 
 int SearchNode(char* getData)
@@ -117,14 +161,17 @@ int SearchNode(char* getData)
 int main()
 {
 	InsertNewNode("Test01");
-	PrintNode();
 
 	DeleteNode("Test01");
+
+	InsertNewNode("Test02");
+	InsertNewNode("Test03");
+
+	PrintNode();
+
 	SearchNode("Test01");
 
 
-	//InsertNewNode("Test02");
-	//InsertNewNode("Test03");
 
 	return 0;
 }
