@@ -43,7 +43,7 @@ int PrintNode()
 
 	while(IS_EMPTY(pNode) == 0)//0
 	{
-		printf("[%p]의 주소가 가리키는 데이터 ---> [%s]\n", pNode, pNode->nData);
+		printf("[%p]의 주소가 가리키는 데이터 --->[%s]\n", pNode, pNode->nData);
 		printf("[%p]주소의 다음 ---> [%p]\n\n", pNode, pNode->next);
 
 		pNode = pNode->next;
@@ -107,6 +107,9 @@ int DeleteNode(char* getData)
 			else
 			{
 				g_head = pTemp->next;
+				//printf("pTemp->nData : %s\npTemp : %p\npTemp->next : %p\n", pTemp->nData, pTemp, pTemp->next);
+				//printf("g_head->nData : %s\g_head : %p\g_head->next : %p\n", g_head->nData, g_head, g_head->next);
+
 			}
 
 			printf("DeleteData() : [%s]의 데이터가 삭제되었음\n", getData);
@@ -162,14 +165,15 @@ int main()
 {
 	InsertNewNode("Test01");
 
-	DeleteNode("Test01");
 
 	InsertNewNode("Test02");
 	InsertNewNode("Test03");
 
 	PrintNode();
 
+	DeleteNode("Test03");
 	SearchNode("Test01");
+
 
 
 
