@@ -1,4 +1,5 @@
-# My-library
-개인스터디 c / c++
+# Algorithms / Data Structures
 
-2023-08
+C / C++ 
+
+2023-08 ~ 
