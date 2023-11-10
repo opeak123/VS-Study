@@ -122,12 +122,18 @@ Tree* GetMinNode(Tree* t)
 	return t;
 }
 
-void DisplayInorder(Tree* t)
+
+//전위 중위 후위
+//Preorder 
+//Inorder
+//Postorder
+
+void PrintNode(Tree* t)
 {
 	if (t != NULL)
 	{
-		DisplayInorder(t->left);
 		printf("%d ", t->value);
-		DisplayInorder(t->right);
+		PrintNode(t->left);
+		PrintNode(t->right);
 	}
 }
