@@ -47,7 +47,7 @@ int main(void)
 			printf("\n\n삽입할 정수 입력 : ");
 			scanf("%d", &data);
 
-			root = AddNode(root,data);
+			root = AddNode(root, data);
 			break;
 
 		case 2:
@@ -122,7 +122,7 @@ Tree* GetMinNode(Tree* t)
 	return t;
 }
 
-Tree* DeleteNode(Tree* t,int target)
+Tree* DeleteNode(Tree* t, int target)
 {
 	Tree* temp;
 	if (t->value == target)
@@ -138,7 +138,7 @@ Tree* DeleteNode(Tree* t,int target)
 			free(t);
 			return temp; //오른쪽 자식 노도의 값 리턴
 		}
-		else if(t->right == NULL)//case3. 왼쪽 자식 노드만 있는경우
+		else if (t->right == NULL)//case3. 왼쪽 자식 노드만 있는경우
 		{
 			temp = t->left;
 			free(t);
@@ -157,7 +157,7 @@ Tree* DeleteNode(Tree* t,int target)
 	}
 	else //if (target > t->value)
 	{
-		t->right = DeleteNode(t->right,target);
+		t->right = DeleteNode(t->right, target);
 	}
 	return t;
 }
