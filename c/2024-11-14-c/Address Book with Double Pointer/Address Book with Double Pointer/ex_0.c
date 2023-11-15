@@ -16,6 +16,7 @@
 #include <malloc.h>
 #include <memory.h>
 #include <string.h>
+#include <stdbool.h>
 
 //#pragma warning(disable:4996)
 
@@ -29,6 +30,7 @@ typedef struct AddressBook
 	int birthday;
 	//번호
 	int number;
+	//next pointer
 	AddressBookPointer bookPointer;
 }AddressBook;
 
@@ -52,14 +54,19 @@ void DeleteBook(void);
 //0. 종료
 //파일저장할건지 
 
+//노드 비었는지 확인
+bool IsEmpty(AddressBook* book)
+{
+	return book == NULL;
+}
 
 void AddBook(AddressBook** book, const char* name, int day, int number)
 {
-	// 새로운 주소록 항목을 동적으로 할당
+	//동적 할당
 	AddressBook* newBook = (AddressBook*)malloc(sizeof(AddressBook));
 
 	// 이름, 생년월일, 번호 저장
-	//newBook->name = strdup(name);  // 이름은 따로 동적 할당 후 복사
+	//malloc + strcpy
 	newBook->name = _strdup(name);
 	newBook->birthday = day;
 	newBook->number = number;
@@ -67,6 +74,31 @@ void AddBook(AddressBook** book, const char* name, int day, int number)
 	// 새 항목을 주소록의 맨 앞에 추가
 	newBook->bookPointer = *book;
 	*book = newBook;
+}
+
+void NameSearch(AddressBook** book, char* name)
+{
+	if (IsEmpty(book))
+		return;
+	
+	//Double Pointer Address
+	AddressBook* temp = *book;
+	//노드 체크
+	int countNumber = 0;
+	while (temp != NULL)
+	{
+		printf("\nname : [%s]\n",temp->name);
+//		putchar('\n');
+		printf("birthday : [%d]  number : [%d]\n", temp->birthday, temp->number);
+
+		countNumber++;
+		temp = temp->bookPointer;
+	}
+
+	if (countNumber == 0)
+	{
+		printf("not found\n\n");
+	}
 }
 
 int main(void)
@@ -83,6 +115,8 @@ int main(void)
     scanf_s("%d", &number);
 
     AddBook(&book, name, day, number);
+
+	NameSearch(&book, name);
 
     return 0;
 }
