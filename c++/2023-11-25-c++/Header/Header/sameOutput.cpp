@@ -1,4 +1,4 @@
-#include <iostream>
+/*#include <iostream>
 #include <string>
 
 class MyClass {
@@ -19,7 +19,7 @@ int main() {
     std::cout << obj3.value << " " << obj3.text << std::endl;
 
     return 0;
-}
+}*/
 
 /*
 * 

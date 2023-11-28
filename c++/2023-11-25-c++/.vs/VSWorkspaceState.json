@@ -1,6 +1,9 @@
 {
   "ExpandedNodes": [
-    ""
+    "",
+    "\\Header",
+    "\\Header\\Header"
   ],
+  "SelectedNode": "\\Header\\Header\\test.cpp",
   "PreviewInSolutionExplorer": false
 }
