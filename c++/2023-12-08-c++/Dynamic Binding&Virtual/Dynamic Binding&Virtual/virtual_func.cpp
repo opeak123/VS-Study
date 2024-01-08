@@ -63,11 +63,6 @@ public:
 
 int main(void)
 {
-	/*Player e{ 1,1 ,1,1};
-
-	e.Move(1, 1);
-	e.PrintPos();*/
-		
 	Entity* e = new Player{ 1,2,3,4 };
 	e->Move(1,1);
 	delete e;
