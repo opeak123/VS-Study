@@ -127,6 +127,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Deep Copy.cpp" />
     <ClCompile Include="Global operator.cpp" />
     <ClCompile Include="Operator overloading.cpp" />
     <ClCompile Include="Unary operator overloading.cpp" />
