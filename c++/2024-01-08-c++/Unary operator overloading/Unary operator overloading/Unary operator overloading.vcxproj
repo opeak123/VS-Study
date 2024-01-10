@@ -130,6 +130,7 @@
     <ClCompile Include="Deep Copy.cpp" />
     <ClCompile Include="Global operator.cpp" />
     <ClCompile Include="Operator overloading.cpp" />
+    <ClCompile Include="Subscript operator.cpp" />
     <ClCompile Include="Unary operator overloading.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
