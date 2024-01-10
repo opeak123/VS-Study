@@ -9,7 +9,35 @@ private:
 	int* ptr;
 	int size;
 
+	//깊은 복사 방지  
+	/*Array& operator=(const Array& rhs)
+	{
+		if (this == &rhs)
+			return *this;
+
+		delete ptr;
+		size = rhs.size;
+		ptr = new int[rhs.size];
+
+		for (int i = 0; i < size; i++)
+		{
+			ptr[i] = rhs.ptr[i];
+		}
+		return *this;
+	}*/
+
+
+	/*Array operator=(const Array& rhs) const
+	{
+		return rhs;
+	}*/
+
+
 public:
+	//Array& operator=(const Array& rhs) const = delete;
+	//Array(const Array& rhs) = delete;
+
+
 	Array(int val, int size)
 		:size{ size }
 	{
@@ -42,7 +70,7 @@ public:
 		}*/
 	}
 
-	Array& operator=(const Array& rhs)
+	/*Array& operator=(const Array& rhs)
 	{
 		if (this == &rhs)
 			return *this;
@@ -56,7 +84,9 @@ public:
 			ptr[i] = rhs.ptr[i];
 		}
 		return *this;
-	}
+	}*/
+
+	
 
 	int& operator[](int index) 
 	{
@@ -92,13 +122,18 @@ public:
 int main(void)
 {
 	const Array a1{ 5,10};
+	Array a2{ 4,6 };
 
+	Array a3 = a1;
 	//Array a2{ 3,5 };
 
 	//std::cout << a1[0] << std::endl; //a1.operator=(0);
 	//a1[0] = 10; 
 
-	std::cout << sizeof(a1) << std::endl;
+	//std::cout << sizeof(a1) << std::endl;
+
+	a2 = a1;
+
 
 	return 0;
 }
